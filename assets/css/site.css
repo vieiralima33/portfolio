@@ -34,3 +34,13 @@ button:hover{
     text-align: right;
     color: #fff;
 }
+#project1, #project2, #project3, #project4{
+    min-width:440px;
+    min-height:350px;
+}
+.navbar-brand i:hover{
+    transform:scale(1.1) rotate(-16deg)
+}
+button:focus{
+    background: linear-gradient(#188e92,#006366)!important;
+}
