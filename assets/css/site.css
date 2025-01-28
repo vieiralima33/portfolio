@@ -8,3 +8,29 @@
 .letter-spacing{
     letter-spacing: 3px;
 }
+.number{
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none; /* Chrome, Safari, Edge */
+    border:none!important;
+    letter-spacing: 8px;
+}
+.number:active{
+    border:none!important
+}
+
+.number::-webkit-inner-spin-button,
+.number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0 2px; 
+    border:none!important
+}
+button:hover{
+    transform:scale(1.04);
+    transition: ease-out 0.3s;
+}
+.result {
+    height: 60px;
+    padding: 20px;
+    text-align: right;
+    color: #fff;
+}
