@@ -49,8 +49,16 @@ button:hover {
 #project2,
 #project3,
 #project4 {
-    min-width: 440px;
     min-height: 350px;
+}
+@media only screen and (max-width: 580px)   
+    {
+    #project1,
+    #project2,
+    #project3,
+    #project4 {
+    width: 90%;
+    }
 }
 
 .navbar-brand i:hover {
@@ -69,15 +77,15 @@ button:focus {
     margin-right: -100px;
     z-index: 0;
     box-shadow: 8px 2px 25px rgb(56, 56, 56);
-    filter: brightness(70%);
+    filter: brightness(75%);
 }
 #profile-photo:hover {
     transform:scale(1.01) rotate(-3deg);
     filter: brightness(100%);
-}
+}   
 
 .box {
-    height: 150px;
+    height: 250px;
 }
 
 #scroll-about {
@@ -85,12 +93,9 @@ button:focus {
     padding: 0;
 }
 
-/* Estilizando a barra de rolagem */
 #scroll-about::-webkit-scrollbar {
     width: 8px;
-    /* Largura da barra vertical */
     height: 8px;
-    /* Altura da barra horizontal */
 }
 
 #scroll-about::-webkit-scrollbar-thumb {
