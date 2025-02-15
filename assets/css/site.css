@@ -150,3 +150,7 @@ button:hover {
     transform: scale(1.1);
     opacity: 1;
 }
+#social-media a:hover{
+    transform:scale(1.05);
+    opacity:1
+}
