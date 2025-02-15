@@ -7,6 +7,9 @@
     scroll-behavior: smooth;
     overflow-x: scrol;
 }
+main{
+    min-height: 89vh;
+}
 
 .letter-spacing {
     letter-spacing: 3px;
@@ -70,7 +73,7 @@ button:hover {
     min-height: 45px;
 }
 
-button:focus {
+#project1 button:focus{
     background: linear-gradient(#188e92, #006366) !important;
 }
 
@@ -90,7 +93,7 @@ button:focus {
 }   
 
 .box {
-    height: 250px;
+    min-height: 300px;
 }
 #presentation{
     display:none;
@@ -125,4 +128,25 @@ button:focus {
 #scroll-about::-webkit-scrollbar-track {
     background: #ddd;
     border-radius: 4px;
+}
+
+/* carrossel*/
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.carousel-item img {
+    padding: 5px;
+    width: 90px;
+    height: 80px;
+    object-fit:fill;
+    border: 2px solid transparent;
+    opacity: 0.8;
+}
+.carousel-item img:hover{
+    border-color: rgba(0, 178, 187, 0.5);
+    transform: scale(1.1);
+    opacity: 1;
 }
