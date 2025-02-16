@@ -14,38 +14,9 @@ main{
     letter-spacing: 3px;
 }
 
-.number {
-    -moz-appearance: textfield;
-    /* Firefox */
-    -webkit-appearance: none;
-    /* Chrome, Safari, Edge */
-    border: none !important;
-    letter-spacing: 8px;
-}
-
-.number:active {
-    border: none !important
-}
-
-.number::-webkit-inner-spin-button,
-.number::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0 2px;
-    border: none !important
-}
-
 button:hover {
     transform: scale(1.04);
     transition: ease-out 0.3s;
-}
-
-.result {
-    height: 60px;
-    padding: 20px;
-    text-align: right;
-    font-size: 24px;
-    color: #fff;
-    overflow: hidden;
 }
 
 #project1,
@@ -68,21 +39,13 @@ button:hover {
     transform: scale(1.1) rotate(-16deg)
 }
 
-#project1 button{
-    min-height: 45px;
-}
-
-#project1 button:focus{
-    background: linear-gradient(#188e92, #006366) !important;
-}
-
 #profile-photo {
     width: 210px;
     height: 210px;
     object-fit: cover;
     border-radius: 50%;
     z-index: 1;
-    box-shadow: 8px 2px 25px rgb(56, 56, 56);
+    box-shadow: 8px 2px 25px rgb(0, 0, 0);
     filter: brightness(75%);
 }
 #profile-photo:hover {
@@ -92,7 +55,7 @@ button:hover {
 }   
 
 .box {
-    height: 250px;
+    height: 280px;
 }
 #presentation{
     display:none;
@@ -109,7 +72,7 @@ button:hover {
 
 #scroll-about {
     margin: 0;
-    padding: 0;
+    padding: 10px;
 }
 
 #scroll-about::-webkit-scrollbar {
@@ -130,7 +93,6 @@ button:hover {
     border-radius: 4px;
 }
 
-/* carrossel*/
 .carousel-item {
     display: flex;
     justify-content: center;
