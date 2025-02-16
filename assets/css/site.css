@@ -5,7 +5,6 @@
     font-size: 18px;
     transition: 0.3s ease-out;
     scroll-behavior: smooth;
-    overflow-x: scrol;
 }
 main{
     min-height: 89vh;
@@ -93,12 +92,13 @@ button:hover {
 }   
 
 .box {
-    min-height: 300px;
+    height: 250px;
 }
 #presentation{
     display:none;
     transform:scale(0);
     opacity: 0;
+    max-width:60%;
     transition: transform 0.5s, opacity 0.5s
 }
 .show {
