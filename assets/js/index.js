@@ -7,5 +7,5 @@ function loadPage(page) {
         .catch(error => console.error('Error loading page:', error));
 }
 document.addEventListener("DOMContentLoaded", () => {
-    loadPage('about.html');
+    loadPage('./src/about.html');
 });
