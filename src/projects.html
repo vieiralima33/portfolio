@@ -1,39 +1,23 @@
 <div id="projects" class="container d-flex flex-wrap pt-5 justify-content-center">
     <h1 class="col-12 text-center display-5 text-light letter-spacing">SAMPLE PROJECTS 2025</h1>
-    <div id="project1" class="col-md-5 m-1 col-sm-10 text-center">
-        <h4 class="bg-dark bg-gradient mb-0 text-light letter-spacing p-2 rounded-top fw-light">Project1</h4>
-        <div class="bg-gradient">
-            <p class="bg-secondary p-3 rounded-bottom">Lorem ipsum dolor, sit amet consectetur adipisicing
-                elit.
-                Nostrum, adipisci aliquam architecto repudiandae omnis ullam eos sit deleniti perspiciatis
-                molestias
-                exercitationem tempore hic enim est quaerat quidem porro quae nihil?
-            </p>
+    <div id="project1" class="col-md-10 m-1 col-sm-12 text-center">
+        <h4 class="bg-dark bg-gradient mb-0 text-light letter-spacing p-2 rounded-top fw-light">Bible</h4>
+        <div class="col-12 bg-gradient">
+            <form id="searchForm" class="d-flex flex-wrap justify-content-center align-items-center gap-2 p-3">
+                <label for="book" class="col-md-1 col-sm-4 text-white">Book</label>
+                <input id="book" type="text" class="col-md-3 col-sm-6 rounded border-0 p-2" placeholder="Ex: John" required>
+                <label for="chapter" class="col-md-2 col-sm-4 text-white">Chapter</label>
+                <input id="chapter" type="number" min="1" max="199" class="col-md-1 col-sm-6 rounded border-0 p-2" placeholder="Ex: 3" required>
+                <label for="verse" class="col-md-1 col-sm-4 text-white">Verse</label>
+                <input id="verse" type="number" min="1" max="199" class="col-md-1 col-sm-6 rounded border-0 p-2" placeholder="Ex: 16" required>
+                <button type="submit" class="col-md-3 col-sm-6 mx-auto btn btn-outline-info">Search</button>
+            </form>
+            <div class="container">
+                <h6 id="chapterTxt" class="text-white px-5 py-1 bg-gradient rounded-top-1"></h6>
+                <p id="verseTxt" class="text-center text-white bg-dark px-5 py-2 rounded-bottom-1">
+                </p>
+            </div>
         </div>
     </div>
-    <div id="project2" class="col-md-5 m-1 col-sm-10 text-center">
-        <h4 class="bg-dark bg-gradient mb-0 text-light letter-spacing p-2 rounded-top fw-light">Project2</h4>
-        <div class="bg-gradient">
-            <p class="bg-secondary p-3 rounded-bottom">Lorem ipsum dolor, sit amet consectetur adipisicing
-                elit.
-                Nostrum, adipisci aliquam architecto repudiandae omnis ullam eos sit deleniti perspiciatis
-                molestias
-                exercitationem tempore hic enim est quaerat quidem porro quae nihil?
-            </p>
-        </div>
-    </div>
-    <div id="project3" class="col-md-5 m-1 col-sm-10 text-center">
-        <h4 class="bg-dark bg-gradient mb-0 text-light letter-spacing p-2 rounded-top fw-light">Project3</h4>
-        <p class="bg-secondary p-3 rounded-bottom">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Nostrum, adipisci aliquam architecto repudiandae omnis ullam eos sit deleniti perspiciatis
-            molestias
-            exercitationem tempore hic enim est quaerat quidem porro quae nihil?</p>
-    </div>
-    <div id="project4" class="col-md-5 m-1 col-sm-10 text-center">
-        <h4 class="bg-dark bg-gradient mb-0 text-light letter-spacing p-2 rounded-top fw-light">Project4</h4>
-        <p class="bg-secondary p-3 rounded-bottom">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Nostrum, adipisci aliquam architecto repudiandae omnis ullam eos sit deleniti perspiciatis
-            molestias
-            exercitationem tempore hic enim est quaerat quidem porro quae nihil?</p>
-    </div>
+    
 </div>
