@@ -58,7 +58,7 @@ main button:hover {
 
 .scroll {
     margin: 0;
-    overflow: auto;
+    overflow-y: auto;   
 }
 .scroll::-webkit-scrollbar {
     width: 6px;
