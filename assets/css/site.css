@@ -6,7 +6,8 @@
     transition: 0.3s ease-out;
     scroll-behavior: smooth;
 }
-main{
+
+main {
     min-height: 89vh;
 }
 
@@ -14,23 +15,17 @@ main{
     letter-spacing: 3px;
 }
 
-button:hover {
+main button:hover {
     transform: scale(1.04);
     transition: ease-out 0.3s;
 }
 
-#project1,
-#project2,
-#project3,
-#project4 {
+#project1 {
     min-height: 350px;
 }
 @media only screen and (max-width: 580px)   
     {
-    #project1,
-    #project2,
-    #project3,
-    #project4 {
+    #project1 {
     width: 90%;
     }
 }
@@ -89,8 +84,8 @@ button:hover {
 }
 
 #techs img {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 50px;
     opacity: 0.9
 }
 #techs img:hover {
