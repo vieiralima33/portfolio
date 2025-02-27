@@ -54,7 +54,7 @@ function toggleChapters(bookItem, book) {
         chaptersContainer.innerHTML = "";
         book.chapters.forEach((verses, index) => {
             const chapterButton = document.createElement("button");
-            chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "mb-1", "col-4");
+            chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "mb-1", "col-sm-4", "col-5");
             chapterButton.textContent = index < 9 ? `0${index + 1}`:`${index + 1}`;
             chapterButton.onclick = () => selectChapter(book.name, index + 1, verses);
 
