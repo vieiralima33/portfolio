@@ -9,7 +9,7 @@
 }
 
 main {
-    min-height: 90vh;
+    min-height: 91vh;
 }
 
 .letter-spacing {
@@ -66,16 +66,16 @@ main button:hover {
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 217, 255, 0.719);
-    border-radius: 4px;
+    background-color: rgba(80, 80, 80, 0.7);
+    border-radius: 50px;
 }
 
 .scroll::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(1, 133, 139, 0.589);
+    background-color: rgba(1, 133, 139, 0.5);
 }
 .scroll::-webkit-scrollbar-track {
-    background: #ddd;
-    border-radius: 6px;
+    background: #2b2b2b;
+    border-radius: 20px;
 }
 
 #social-media a:hover{
@@ -101,5 +101,11 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 #books{
-    min-width: 150px;
+    min-width: 146px;
+}
+button.navbar-toggler:focus{
+    border: 1px !important
+}
+button.navbar-toggler:hover{
+    background-color:#27282e
 }
