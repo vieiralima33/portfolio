@@ -29,7 +29,7 @@ async function loadBible() {
             bookButton.classList.add("btn", "btn-primary", "bg-gradient", "fw-semibold", "rounded-0", "w-100");
             bookButton.textContent = book.name;
             const chaptersContainer = document.createElement("div");
-            chaptersContainer.classList.add("chapters", "d-none", "mt-1");
+            chaptersContainer.classList.add("chapters", "d-none", "py-1");
             bookItem.appendChild(bookButton);
             bookItem.appendChild(chaptersContainer);
             booksContainer.appendChild(bookItem);
@@ -46,7 +46,7 @@ function toggleChapters(bookItem, book) {
     const chaptersContainer = bookItem.querySelector(".chapters");
     const isExpanded = !chaptersContainer.classList.contains("d-none");
 
-    document.querySelectorAll(".chapters").forEach(chap => chap.classList.add("d-none"));
+    document.querySelectorAll(".chapters").forEach(chap => chap.classList.add("d-none", "bg-dark"));
 
     if (isExpanded) {
         chaptersContainer.classList.add("d-none");
@@ -54,7 +54,7 @@ function toggleChapters(bookItem, book) {
         chaptersContainer.innerHTML = "";
         book.chapters.forEach((verses, index) => {
             const chapterButton = document.createElement("button");
-            chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "mb-1", "col-sm-4", "col-5");
+            chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "m-1", "col-sm-3", "col-4");
             chapterButton.textContent = index < 9 ? `0${index + 1}`:`${index + 1}`;
             chapterButton.onclick = () => selectChapter(book.name, index + 1, verses);
 

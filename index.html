@@ -12,21 +12,17 @@
     <title>Portfolio - Filipe Lima</title>
 </head>
 
-<body class="scroll">
+<body class="scroll bg-dark">
     <!--NAVBAR START-->
     <header>
-        <nav id="navbar"
-            class="container-fluid position-fixed z-3 text-center navbar navbar-expand-sm navbar-dark bg-dark">
-            <a class="navbar-brand ms-2 letter-spacing text-info" href="#" onclick="loadPage('./src/about.html'); return false;"><i class="fa-solid fa-code"></i> Filipe
-                Lima</a>
+        <nav id="navbar" class="container-fluid position-fixed z-3 text-center navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand ms-2 letter-spacing text-info" href="#" onclick="loadPage('./src/about.html'); return false;"><i class="fa-solid fa-code"></i> Filipe Lima</a>
 
-            <button class="navbar-toggler me-1 d-lg-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button id="menuToggle" class="navbar-toggler border-0 shadow-sm me-1 d-lg-none" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end me-2" id="collapsibleNavId">
+            <div class="navbar-collapse justify-content-end me-2 d-none" id="collapsibleNavId">
                 <ul class="navbar-nav mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="loadPage('./src/about.html'); return false;">Home</a>

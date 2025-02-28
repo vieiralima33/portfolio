@@ -3,7 +3,7 @@ function loadPage(page) {
         .then(response => response.text())
         .then(html => {
             document.getElementById('content').innerHTML = html;
-            loadPageScript(page); 
+            loadPageScript(page);
         })
         .catch(error => console.error('Error loading page:', error));
 }
@@ -21,8 +21,23 @@ function loadPageScript(page) {
         script.dataset.pagina = true;
         document.body.appendChild(script);
     }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     loadPage('./src/about.html');
 });
+let menu = document.getElementById("collapsibleNavId");
+let toggleButton = document.getElementById("menuToggle");
+let links = document.querySelectorAll("#collapsibleNavId .nav-link");
+
+toggleButton.addEventListener("click", () => {
+    menu.classList.toggle("d-none");
+});
+
+links.forEach(link => {
+    link.addEventListener("click", () => {
+        menu.classList.add("d-none");
+    });
+});
+
