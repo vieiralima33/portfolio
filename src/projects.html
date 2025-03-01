@@ -1,12 +1,24 @@
 <div id="projects" class="container d-flex flex-wrap pt-2 justify-content-center">
-    <div id="project1" class="col-12 my-2 shadow-lg">
-        <h6 id="chapterTxt" class="text-white p-2 bg-gradient rounded-top-1 text-center letter-spacing fs-5">SELECT A CHAPTER</h6>
-        <div id="bible" class="bg-gradient d-flex flex-nowrap justify-content-center">
+    <div id="project1" class="container-fluid bg-gradient my-2 shadow-lg">
+        <div class="row justify-content-between p-1 align-items-center">
+            <h6 id="chapterTxt" class="col-8 text-white p-2 rounded-top-1 letter-spacing fs-5">SELECT A CHAPTER</h6>
+            <div class="dropdown col-4 text-end">
+                <button class="btn btn-dark text-white p-2" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">CHANGE TRANSLATE</button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" onclick="loadBible();">AA</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="loadBible('acf.json');">ACF</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="loadBible('nvi.json');">NVI</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="bible" class="bg-dark d-flex flex-nowrap justify-content-center">
             <div id="books" class="col-md-3 col-4">
                 <ul class="list-group vh-100 overflow-y-auto text-center scroll"></ul>
             </div>
-            <div class="col-md-9 col-8">
-                <p id="verseTxt" class="text-white bg-dark px-md-5 py-3 rounded-bottom-1 vh-100 overflow-y-auto scroll"></p>
+            <div class="col-md-9 col-8">    
+                <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-lighter rounded-bottom-1 vh-100 overflow-y-auto scroll"></p>
             </div>
         </div>
     </div>
