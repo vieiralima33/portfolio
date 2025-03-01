@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     font-size: 16px;
-    font-family: sans-serif, Verdana, Geneva, Tahoma;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
     transition: 0.3s ease-out;
     scroll-behavior: smooth;
 }
@@ -20,21 +20,17 @@ main button:hover {
     transform: scale(1.04);
     transition: ease-out 0.3s;
 }
-
-.navbar-brand i:hover {
-    transform: scale(1.1) rotate(-16deg)
-}
-
-#profile-photo {
-    width: 210px;
-    height: 210px;
-    object-fit: cover;
+#container-photo{
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    z-index: 1;
-    box-shadow: 8px 2px 25px rgb(0, 0, 0);
+    box-shadow: 6px 2px 25px rgb(0, 0, 0);
+    background-image: url('../img/profile-photo.jpg');
+    background-position-y: 16%;
     filter: brightness(75%);
 }
-#profile-photo:hover {
+
+#container-photo:hover {
     transform:scale(1.03) rotate(-3deg);
     filter: brightness(100%);
 }   
@@ -74,7 +70,7 @@ main button:hover {
 }
 
 #techs img {
-    width: 55px;
+    width: 50px;
     height: 50px;
     opacity: 0.9
 }
@@ -96,9 +92,30 @@ input[type="number"] {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-button.navbar-toggler:focus{
-    border: 1px !important
-}
+
 button.navbar-toggler:hover{
     background-color:#27282e
+}
+.nav-link{
+    border-bottom: 2px solid transparent!important
+
+}
+.nav-link:hover{
+    border-bottom: 2px solid rgba(0, 195, 255, 0.753)!important
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 0%; }
+}
+
+.text-gradient {
+    background: radial-gradient(#00eeff, #2e1a63);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 48px;
+    font-weight: bold;
+    display: inline-block;
+    animation: gradientMove 5s linear infinite;
 }
