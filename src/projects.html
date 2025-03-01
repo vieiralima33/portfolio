@@ -3,12 +3,12 @@
         <div class="row justify-content-between p-1 align-items-center">
             <h6 id="chapterTxt" class="col-8 text-white p-2 rounded-top-1 letter-spacing fs-5">SELECT A CHAPTER</h6>
             <div class="dropdown col-4 text-end">
-                <button class="btn btn-dark text-white p-2" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">CHANGE TRANSLATE</button>
+                <button id="change-translation" class="btn btn-dark text-white p-2" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">CHANGE TRANSLATION</button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" onclick="loadBible();">AA</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="loadBible('acf.json');">ACF</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="loadBible('nvi.json');">NVI</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="loadBible();alert('Translation Changed To AA!');return false;">AA</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="loadBible('acf.json');alert('Translation Changed To ACF!');return false;">ACF</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="loadBible('nvi.json');alert('Translation Changed To NVI!');return false;">NVI</a></li>
                 </ul>
             </div>
         </div>
