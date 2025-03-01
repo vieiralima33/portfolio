@@ -16,12 +16,17 @@ document.getElementById('books').addEventListener('click', function (event) {
     }
 });
 
-async function loadBible(translate='aa.json') {
+var currentBook = '';
+var currentChapter = 1;
+var currentVerses = [];
+
+async function loadBible(translate = 'aa.json') {
     try {
         const response = await fetch(`./assets/json/${translate}`);
         bibleJson = await response.json();
         const booksContainer = document.querySelector("#books ul");
         booksContainer.innerHTML = "";
+
         bibleJson.forEach(book => {
             const bookItem = document.createElement("li");
             bookItem.classList.add("list-group");
@@ -33,16 +38,19 @@ async function loadBible(translate='aa.json') {
             bookItem.appendChild(bookButton);
             bookItem.appendChild(chaptersContainer);
             booksContainer.appendChild(bookItem);
+
+            if (book.name === currentBook) {
+                toggleChapters(bookItem, book, true);
+            }
         });
+
     } catch (error) {
         console.error("Erro ao carregar a Bíblia:", error);
         document.querySelector("#books ul").innerHTML = "<li class='text-danger'>Erro ao carregar os livros.</li>";
     }
 }
 
-loadBible('aa.json');
-
-function toggleChapters(bookItem, book) {
+function toggleChapters(bookItem, book, isInitialLoad = false) {
     const chaptersContainer = bookItem.querySelector(".chapters");
     const isExpanded = !chaptersContainer.classList.contains("d-none");
 
@@ -55,21 +63,30 @@ function toggleChapters(bookItem, book) {
         book.chapters.forEach((verses, index) => {
             const chapterButton = document.createElement("button");
             chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "p-1", "m-1", "col-sm-3", "col-4");
-            chapterButton.textContent = index < 9 ? `0${index + 1}`:`${index + 1}`;
+            chapterButton.textContent = index < 9 ? `0${index + 1}` : `${index + 1}`;
             chapterButton.onclick = () => selectChapter(book.name, index + 1, verses);
 
             chaptersContainer.appendChild(chapterButton);
         });
 
-        chaptersContainer.classList.remove("d-none"); 
+        chaptersContainer.classList.remove("d-none");
+
+        if (isInitialLoad && currentChapter) {
+            selectChapter(book.name, currentChapter, book.chapters[currentChapter - 1]);
+        }
     }
 }
 
 function selectChapter(bookName, chapterNumber, verses) {
+    currentBook = bookName;
+    currentChapter = chapterNumber;
+    currentVerses = verses; 
+
     document.getElementById("chapterTxt").textContent = `${bookName} ${chapterNumber}`;
     const versesText = verses.map((verse, index) => `<strong>${index + 1}.</strong> ${verse}`).join("<br/> ");
     document.getElementById("verseTxt").innerHTML = versesText;
 }
+
 function changeTranslation(translation) {
     loadBible(translation.toLowerCase() + '.json');
 
@@ -78,4 +95,13 @@ function changeTranslation(translation) {
 
     const modal = new bootstrap.Modal(document.getElementById('translationModal'));
     modal.show();
+
+    if (currentBook && currentChapter && currentVerses.length > 0) {
+        const bookData = bibleJson.find(book => book.name === currentBook);
+        if (bookData) {
+            selectChapter(currentBook, currentChapter, bookData.chapters[currentChapter - 1]);
+        }
+    }
 }
+
+loadBible('aa.json');
