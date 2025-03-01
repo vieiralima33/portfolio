@@ -21,16 +21,6 @@ main button:hover {
     transition: ease-out 0.3s;
 }
 
-#project1 {
-    min-height: 350px;
-}
-@media only screen and (max-width: 580px)   
-    {
-    #project1 {
-    width: 90%;
-    }
-}
-
 .navbar-brand i:hover {
     transform: scale(1.1) rotate(-16deg)
 }
@@ -66,7 +56,7 @@ main button:hover {
 }
 
 .scroll::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 255, 255, 0.562);
+    background-color: rgba(0, 195, 255, 0.753);
     border-radius: 50px;
 }
 
@@ -100,8 +90,11 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
-#books{
-    min-width: 146px;
+#books ul a{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 button.navbar-toggler:focus{
     border: 1px !important

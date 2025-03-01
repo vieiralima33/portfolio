@@ -1,5 +1,5 @@
-document.getElementById('content').addEventListener('click', function (event) {
-    if (event.target.classList.contains('btn-primary')) {
+document.getElementById('books').addEventListener('click', function (event) {
+    if (event.target.classList.contains('btn-dark')) {
         const bookItem = event.target.parentElement;
         const bookName = event.target.textContent;
         const bookData = bibleJson.find(book => book.name === bookName);
@@ -26,7 +26,7 @@ async function loadBible(translate='aa.json') {
             const bookItem = document.createElement("li");
             bookItem.classList.add("list-group");
             const bookButton = document.createElement("a");
-            bookButton.classList.add("btn", "btn-primary", "bg-gradient", "fw-semibold", "rounded-0", "w-100");
+            bookButton.classList.add("btn", "btn-dark", "bg-gradient", "fw-semibold", "rounded-0");
             bookButton.textContent = book.name;
             const chaptersContainer = document.createElement("div");
             chaptersContainer.classList.add("chapters", "d-none", "py-1");
@@ -40,7 +40,7 @@ async function loadBible(translate='aa.json') {
     }
 }
 
-loadBible(translate='aa.json');
+loadBible('aa.json');
 
 function toggleChapters(bookItem, book) {
     const chaptersContainer = bookItem.querySelector(".chapters");
@@ -54,7 +54,7 @@ function toggleChapters(bookItem, book) {
         chaptersContainer.innerHTML = "";
         book.chapters.forEach((verses, index) => {
             const chapterButton = document.createElement("button");
-            chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "m-1", "col-sm-3", "col-4");
+            chapterButton.classList.add("btn", "btn-secondary", "bg-gradient", "fw-semibold", "p-1", "m-1", "col-sm-3", "col-4");
             chapterButton.textContent = index < 9 ? `0${index + 1}`:`${index + 1}`;
             chapterButton.onclick = () => selectChapter(book.name, index + 1, verses);
 
@@ -69,4 +69,13 @@ function selectChapter(bookName, chapterNumber, verses) {
     document.getElementById("chapterTxt").textContent = `${bookName} ${chapterNumber}`;
     const versesText = verses.map((verse, index) => `<strong>${index + 1}.</strong> ${verse}`).join("<br/> ");
     document.getElementById("verseTxt").innerHTML = versesText;
+}
+function changeTranslation(translation) {
+    loadBible(translation.toLowerCase() + '.json');
+
+    const modalMessage = document.getElementById('modalMessage');
+    modalMessage.textContent = 'Translation changed to ' + translation + '!';
+
+    const modal = new bootstrap.Modal(document.getElementById('translationModal'));
+    modal.show();
 }
