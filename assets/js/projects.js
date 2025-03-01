@@ -16,9 +16,9 @@ document.getElementById('content').addEventListener('click', function (event) {
     }
 });
 
-async function loadBible() {
+async function loadBible(translate='aa.json') {
     try {
-        const response = await fetch('./assets/json/aa.json');
+        const response = await fetch(`./assets/json/${translate}`);
         bibleJson = await response.json();
         const booksContainer = document.querySelector("#books ul");
         booksContainer.innerHTML = "";
@@ -40,7 +40,7 @@ async function loadBible() {
     }
 }
 
-loadBible();
+loadBible(translate='aa.json');
 
 function toggleChapters(bookItem, book) {
     const chaptersContainer = bookItem.querySelector(".chapters");
