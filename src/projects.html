@@ -1,24 +1,26 @@
 <div id="projects" class="d-flex flex-wrap pt-2 justify-content-center">
     <div id="project1" class="container my-2 shadow-lg">
-        <div class="row justify-content-between">
-            <div class="col-7 p-2 my-2">
-                <h6 id="chapterTxt" class="px-1 text-white letter-spacing fs-5">SELECT A CHAPTER</h6>
+        <div class="navbar navbar-dark bg-dark">
+            <button id="toggleButton" class="col-1 ms-1 navbar-toggler border-0 shadow-sm d-lg-none" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="col-5 p-2 my-2">
+                <h6 id="chapterTxt" class="px-1 ms-1 text-white letter-spacing"></h6>
                 </div>
-                <div class="col-5 dropdown text-end">
-                    <button id="change-translation" class="btn btn-dark text-white p-2 my-2 flex-wrap" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">CHANGE TRANSLATION</button>
-                    <ul class="dropdown-menu">
+                <div class="col-4 dropdown text-end">
+                    <button id="change-translation" class="btn btn-dark bg-gradient p-2 m-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">CHANGE TRANSLATION</button>
+                    <ul class="dropdown-menu dropdown-menu-end me-lg-2 bg-dark">
                         <li>
-                            <a class="dropdown-item" href="#" onclick="changeTranslation('AA'); return false;">AA - PT</a>
+                            <a class="dropdown-item text-light" href="#" onclick="changeTranslation('AA'); return false;">AA - PT</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#" onclick="changeTranslation('ACF'); return false;">ACF - PT</a>
+                            <a class="dropdown-item text-light" href="#" onclick="changeTranslation('ACF'); return false;">ACF - PT</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#" onclick="changeTranslation('NVI'); return false;">NVI - PT</a>
+                            <a class="dropdown-item text-light" href="#" onclick="changeTranslation('NVI'); return false;">NVI - PT</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#" onclick="changeTranslation('KJV'); return false;">KJV - EN</a>
+                            <a class="dropdown-item text-light" href="#" onclick="changeTranslation('KJV'); return false;">KJV - EN</a>
                         </li>
                     </ul>
                 </div>
@@ -34,14 +36,13 @@
                 </div>
             </div>
         </div>
-
+    </div>
         <div id="bible" class="d-flex justify-content-center">
             <div id="books" class="col-md-3 col-4">
                 <ul class="list-group vh-100 overflow-y-auto text-center scroll"></ul>
             </div>
-            <div class="col-md-9 col-8">    
+            <div id="verseContainer" class="col-md-9 col-8">    
                 <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-light rounded-bottom-1 vh-100 overflow-y-auto scroll"></p>
             </div>
         </div>
-    </div>
 </div>

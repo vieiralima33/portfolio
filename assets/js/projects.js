@@ -16,12 +16,26 @@ document.getElementById('books').addEventListener('click', function (event) {
     }
 });
 
+document.getElementById("toggleButton").addEventListener("click", function () {
+    const booksDiv = document.getElementById("books");
+    const verseContainer = document.getElementById("verseContainer");
+
+    booksDiv.classList.toggle("d-none");
+
+    if (booksDiv.classList.contains("d-none")) {
+        verseContainer.classList.remove("col-md-9", "col-8");
+        verseContainer.classList.add("col-md-12", "col-12");
+    } else {
+        verseContainer.classList.remove("col-md-12", "col-12");
+        verseContainer.classList.add("col-md-9", "col-8");
+    }
+});
+
 var currentBook = '';
 var currentChapter = 1;
 var currentVerses = [];
 
 
-// Função para carregar a Bíblia com a tradução escolhida
 async function loadBible(translate = 'aa.json') {
     try {
         const response = await fetch(`./assets/json/${translate}`);
@@ -41,7 +55,6 @@ async function loadBible(translate = 'aa.json') {
             bookItem.appendChild(chaptersContainer);
             booksContainer.appendChild(bookItem);
 
-            // Se o livro atual for o mesmo do selecionado, mostramos os capítulos
             if (book.name === currentBook) {
                 toggleChapters(bookItem, book, true);
             }
@@ -53,12 +66,10 @@ async function loadBible(translate = 'aa.json') {
     }
 }
 
-// Função para alternar os capítulos
 function toggleChapters(bookItem, book, isInitialLoad = false) {
     const chaptersContainer = bookItem.querySelector(".chapters");
     const isExpanded = !chaptersContainer.classList.contains("d-none");
 
-    // Oculta os capítulos de todos os livros
     document.querySelectorAll(".chapters").forEach(chap => chap.classList.add("d-none", "bg-dark"));
 
     if (isExpanded) {
@@ -76,51 +87,42 @@ function toggleChapters(bookItem, book, isInitialLoad = false) {
 
         chaptersContainer.classList.remove("d-none");
 
-        // Se for a carga inicial, mantém o capítulo selecionado
         if (isInitialLoad && currentChapter) {
             selectChapter(book.name, currentChapter, book.chapters[currentChapter - 1]);
         }
     }
 }
 
-// Função para selecionar um capítulo
 function selectChapter(bookName, chapterNumber, verses) {
-    currentBook = bookName; // Armazenamos o livro atual
-    currentChapter = chapterNumber; // Armazenamos o capítulo atual
-    currentVerses = verses; // Armazenamos os versículos
+    currentBook = bookName; 
+    currentChapter = chapterNumber; 
+    currentVerses = verses; 
 
-    document.getElementById("chapterTxt").textContent = `${bookName} ${chapterNumber}`;
+    document.getElementById("chapterTxt").textContent = `${bookName.toUpperCase()} ${chapterNumber}`;
     const versesText = verses.map((verse, index) => `<strong>${index + 1}.</strong> ${verse}`).join("<br/> ");
     document.getElementById("verseTxt").innerHTML = versesText;
 }
 
-// Função que altera a tradução e carrega o versículo selecionado
 function changeTranslation(translation) {
-    loadBible(translation.toLowerCase() + '.json'); // Carrega a nova tradução
+    loadBible(translation.toLowerCase() + '.json');
 
-    // Exibe a mensagem do modal
     const modalMessage = document.getElementById('modalMessage');
     modalMessage.textContent = 'Translation changed to ' + translation + '!';
 
-    // Exibe o modal de sucesso
     const modal = new bootstrap.Modal(document.getElementById('translationModal'));
     modal.show();
 
-    // Recarrega o capítulo/versículo atual com a nova tradução
     if (currentBook && currentChapter && currentVerses.length > 0) {
-        // Carrega os dados da nova tradução
         const bookData = bibleJson.find(book => book.name === currentBook);
         if (bookData) {
             selectChapter(currentBook, currentChapter, bookData.chapters[currentChapter - 1]);
         }
     } else {
-        // Caso não haja um capítulo ou versículo selecionado, carrega o primeiro capítulo/versículo de um livro
         if (bibleJson.length > 0) {
-            const firstBook = bibleJson[0]; // Primeiro livro da Bíblia
+            const firstBook = bibleJson[0];
             selectChapter(firstBook.name, 1, firstBook.chapters[0]);
         }
     }
 }
 
-// Carregando a tradução inicial
 loadBible();
