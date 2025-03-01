@@ -1,24 +1,43 @@
-<div id="projects" class="container d-flex flex-wrap pt-2 justify-content-center">
-    <div id="project1" class="container-fluid bg-gradient my-2 shadow-lg">
-        <div class="row justify-content-between p-1 align-items-center">
-            <h6 id="chapterTxt" class="col-8 text-white p-2 rounded-top-1 letter-spacing fs-5">SELECT A CHAPTER</h6>
-            <div class="dropdown col-4 text-end">
-                <button id="change-translation" class="btn btn-dark text-white p-2" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">CHANGE TRANSLATION</button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" onclick="loadBible();alert('Translation Changed To AA!');return false;">AA</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="loadBible('acf.json');alert('Translation Changed To ACF!');return false;">ACF</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="loadBible('nvi.json');alert('Translation Changed To NVI!');return false;">NVI</a></li>
-                </ul>
+<div id="projects" class="d-flex flex-wrap pt-2 justify-content-center">
+    <div id="project1" class="container my-2 shadow-lg">
+        <div class="row justify-content-between">
+            <div class="col-7 p-2 my-2">
+                <h6 id="chapterTxt" class="px-1 text-white letter-spacing fs-5">SELECT A CHAPTER</h6>
+                </div>
+                <div class="col-5 dropdown text-end">
+                    <button id="change-translation" class="btn btn-dark text-white p-2 my-2 flex-wrap" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">CHANGE TRANSLATION</button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeTranslation('AA'); return false;">AA</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeTranslation('ACF'); return false;">ACF</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeTranslation('NVI'); return false;">NVI</a>
+                        </li>
+                    </ul>
+                </div>
+        <div class="modal fade" id="translationModal" tabindex="-1" aria-labelledby="translationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark">
+                    <div class="modal-body text-center text-white" id="modalMessage">
+                        Translation changed successfully!
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-outline-info bg-gradient" data-bs-dismiss="modal">OK</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="bible" class="bg-dark d-flex flex-nowrap justify-content-center">
+        <div id="bible" class="d-flex text-center justify-content-center">
             <div id="books" class="col-md-3 col-4">
                 <ul class="list-group vh-100 overflow-y-auto text-center scroll"></ul>
             </div>
             <div class="col-md-9 col-8">    
-                <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-lighter rounded-bottom-1 vh-100 overflow-y-auto scroll"></p>
+                <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-light rounded-bottom-1 vh-100 overflow-y-auto scroll"></p>
             </div>
         </div>
     </div>
