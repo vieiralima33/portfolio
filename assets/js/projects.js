@@ -99,7 +99,7 @@ function selectChapter(bookName, chapterNumber, verses) {
     currentVerses = verses; 
 
     document.getElementById("chapterTxt").textContent = `${bookName.toUpperCase()} ${chapterNumber}`;
-    const versesText = verses.map((verse, index) => `<strong>${index + 1}.</strong> ${verse}`).join("<br/> ");
+    const versesText = verses.map((verse, index) => `<span style="color: #00c3ffc0;">${index + 1}.</span> ${verse}`).join("<br/>");
     document.getElementById("verseTxt").innerHTML = versesText;
 }
 
