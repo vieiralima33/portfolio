@@ -51,6 +51,8 @@ async function loadBible(translate = 'aa.json') {
 
             if (book.name === currentBook) {
                 toggleChapters(bookItem, book, true);
+            } else {
+                defaultBook(currentBook)
             }
         });
 
@@ -112,10 +114,13 @@ function changeTranslation(translation) {
             selectChapter(currentBook, currentChapter, bookData.chapters[currentChapter - 1]);
         }
     } else {
-        if (bibleJson.length > 0) {
-            const firstBook = bibleJson[0];
-            selectChapter(firstBook.name, 1, firstBook.chapters[0]);
-        }
+        defaultBook(currentBook);
+    }
+}
+function defaultBook(currentBook){
+    if (currentBook.length == 0) {
+        const firstBook = bibleJson[0];
+        selectChapter(firstBook.name, 1, firstBook.chapters[0]);
     }
 }
 
