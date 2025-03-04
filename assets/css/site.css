@@ -9,7 +9,7 @@
 }
 
 main {
-    min-height: 91vh;
+    min-height: 90dvh;
 }
 
 .letter-spacing {
@@ -85,6 +85,9 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 input[type="number"] {
     -moz-appearance: textfield;
+}
+#book-list, #verseTxt{
+    height: 70dvh;
 }
 #books ul a{
     display: inline-block;

@@ -18,17 +18,11 @@ document.getElementById('books').addEventListener('click', function (event) {
 
 document.getElementById("toggleButton").addEventListener("click", function () {
     const booksDiv = document.getElementById("books");
-    const verseContainer = document.getElementById("verseContainer");
-
+    const expandIco = document.getElementById("expand-icon");
+    const compressIco = document.getElementById("compress-icon");
+    expandIco.classList.toggle("d-none");
+    compressIco.classList.toggle("d-none");
     booksDiv.classList.toggle("d-none");
-
-    if (booksDiv.classList.contains("d-none")) {
-        verseContainer.classList.remove("col-md-9", "col-8");
-        verseContainer.classList.add("col-md-12", "col-12");
-    } else {
-        verseContainer.classList.remove("col-md-12", "col-12");
-        verseContainer.classList.add("col-md-9", "col-8");
-    }
 });
 
 var currentBook = '';

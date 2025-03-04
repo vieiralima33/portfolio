@@ -2,7 +2,8 @@
     <div id="project1" class="container-md my-2 shadow-lg">
         <div class="navbar navbar-dark bg-dark justify-content-between">
             <button id="toggleButton" class="col-1 ms-1 navbar-toggler border-0 shadow-sm d-lg-none" type="button">
-                <span class="navbar-toggler-icon"></span>
+                <i id="expand-icon" class="fa-solid fa-expand"></i>
+                <i id="compress-icon" class="fa-solid fa-compress d-none"></i>
             </button>
             <div class="col-5 p-2 my-2">
                 <h6 id="chapterTxt" class="px-1 ms-1 text-white letter-spacing"></h6>
@@ -39,10 +40,10 @@
     </div>
         <div id="bible" class="d-flex justify-content-center">
             <div id="books" class="col-md-3 col-4">
-                <ul class="list-group vh-100 overflow-y-auto text-center scroll"></ul>
+                <ul id="book-list" class="list-group overflow-y-auto text-center scroll"></ul>
             </div>
-            <div id="verseContainer" class="col-md-9 col-8">    
-                <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-light rounded-bottom-1 vh-100 overflow-y-auto scroll"></p>
+            <div id="verseContainer" class="flex-grow-1">    
+                <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-light rounded-bottom-1 overflow-y-auto scroll"></p>
             </div>
         </div>
 </div>
