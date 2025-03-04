@@ -7,43 +7,45 @@
             </button>
             <div class="col-5 p-2 my-2">
                 <h6 id="chapterTxt" class="px-1 ms-1 text-white letter-spacing"></h6>
-                </div>
-                <div class="col-5 text-end">
-                    <button id="change-translation" class="btn btn-dark bg-gradient p-2 m-1" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-arrow-right-arrow-left"></i> TRANSLATION</button>
-                    <ul class="dropdown-menu dropdown-menu-end me-lg-2 bg-dark">
-                        <li>
-                            <a class="dropdown-item text-info" href="#" onclick="changeTranslation('AA'); return false;">AA - PT</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-info" href="#" onclick="changeTranslation('ACF'); return false;">ACF - PT</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-info" href="#" onclick="changeTranslation('NVI'); return false;">NVI - PT</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item text-info" href="#" onclick="changeTranslation('KJV'); return false;">KJV - EN</a>
-                        </li>
-                    </ul>
-                </div>
-        <div class="modal fade" id="translationModal" tabindex="-1" aria-labelledby="translationModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content bg-dark">
-                    <div class="modal-body text-center text-white" id="modalMessage">
-                        Translation changed successfully!
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-outline-info bg-gradient" data-bs-dismiss="modal">OK</button>
+            </div>
+            <div class="col-5 text-end">
+                <button id="change-translation" class="btn btn-dark bg-gradient p-2 m-1" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i> TRANSLATION
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end me-lg-2 bg-dark">
+                    <li>
+                        <a class="dropdown-item text-info" href="#" data-translation="AA">AA - PT</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item text-info" href="#" data-translation="KJV">KJV - EN</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="modal fade" id="translationModal" tabindex="-1" aria-labelledby="translationModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-body text-center text-white" id="modalMessage">
+                            Translation changed successfully!
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-outline-info bg-gradient"
+                                data-bs-dismiss="modal">OK</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         <div id="bible" class="d-flex justify-content-center">
             <div id="books" class="col-md-3 col-4">
                 <ul id="book-list" class="list-group overflow-y-auto text-center scroll"></ul>
             </div>
-            <div id="verseContainer" class="flex-grow-1">    
-                <p id="verseTxt" class="text-white bg-gradient px-md-5 px-2 py-4 fw-light rounded-bottom-1 overflow-y-auto scroll"></p>
+            <div id="verseContainer" class="flex-grow-1">
+                <p id="verseTxt"
+                    class="text-white bg-gradient px-md-5 px-2 py-4 fw-light rounded-bottom-1 overflow-y-auto scroll">
+                </p>
             </div>
         </div>
-</div>
+    </div>
