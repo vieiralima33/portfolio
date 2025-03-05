@@ -3,9 +3,6 @@ var currentChapter = 1;
 var currentVerses = [];
 var currentTranslation = 'aa.json';
 var bookMapping = {};
-const booksContainer = document.querySelector("#books ul");
-booksContainer.innerHTML = "";
-const fragment = document.createDocumentFragment();
 
 async function loadBookMapping() {
     try {
