@@ -55,7 +55,6 @@ async function loadBible() {
                     (currentTranslation === 'kjv.json' && book.name === "Genesis")
                 ) {
                     currentBook = book.name;
-                    toggleChapters(bookItem, book, true);
                     selectChapter(book.name, 1, book.chapters[0]);
                 }
             }
@@ -71,7 +70,6 @@ async function loadBible() {
         document.querySelector("#books ul").innerHTML = "<li class='text-danger'>Erro ao carregar os livros.</li>";
     }
 }
-
 
 document.querySelector(".dropdown-menu").addEventListener("click", function (event) {
     if (event.target.tagName === 'A') {
@@ -140,6 +138,7 @@ function getMappedBookName(targetTranslation, currentBookName) {
     }
     return currentBookName;
 }
+
 async function changeTranslation(translation) {
     const previousBook = currentBook;
     const previousChapter = currentChapter;
@@ -148,20 +147,25 @@ async function changeTranslation(translation) {
     
     await loadBible();
     
-    const modalMessage = document.getElementById('modalMessage');
-    modalMessage.textContent = 'Translation changed to ' + translation + '!';
-    const modal = new bootstrap.Modal(document.getElementById('translationModal'));
-    modal.show();
-    setTimeout(() => {
-        modal.hide();
-    }, 2000);
-    
     if (previousBook && previousChapter) {
         const mappedBookName = getMappedBookName(translation, previousBook);
         currentBook = mappedBookName;
         const bookData = bibleJson.find(book => book.name === mappedBookName);
         if (bookData) {
-            selectChapter(mappedBookName, previousChapter, bookData.chapters[previousChapter - 1]);
+            const booksContainer = document.querySelector("#books ul");
+            const bookItems = booksContainer.querySelectorAll("li");
+            let bookItemToToggle = null;
+            
+            bookItems.forEach(bookItem => {
+                if (bookItem.querySelector("a").textContent === mappedBookName) {
+                    bookItemToToggle = bookItem;
+                }
+            });
+            
+            if (bookItemToToggle) {
+                toggleChapters(bookItemToToggle, bookData, true);
+                selectChapter(mappedBookName, previousChapter, bookData.chapters[previousChapter - 1]);
+            }
         } else {
             defaultBook();
         }
