@@ -10,8 +10,8 @@ function loadPage(page) {
 
 function loadPageScript(page) {
     let scriptPath = '';
-    if (page.includes('projects.html')) {
-        scriptPath = './assets/js/projects.js';
+    if (page.includes('project.html')) {
+        scriptPath = './assets/js/project.js';
     }
 
     if (scriptPath) {
