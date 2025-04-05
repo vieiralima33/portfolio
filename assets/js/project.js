@@ -7,6 +7,7 @@ var bibleCache = {};
 var synth = window.speechSynthesis;
 var voices = [];
 var currentUtterance = null;
+var voice;
 
 async function loadBookMapping() {
     try {
@@ -77,6 +78,14 @@ document.querySelector("#dropdown-translation").addEventListener("click", functi
     if (event.target.tagName === 'A') {
         const translation = event.target.getAttribute("data-translation");
         changeTranslation(translation);
+        event.preventDefault();
+    }
+});
+document.querySelector("#dropdown-voice").addEventListener("click", function (event) {
+    if (event.target.tagName === 'A') {
+        const voiceIndex = event.target.getAttribute("data-voice-index");
+        voices = synth.getVoices();
+        voice = voices[voiceIndex];
         event.preventDefault();
     }
 });
@@ -282,17 +291,53 @@ function openChapterInUI(bookData) {
     });
 }
 
-function setupDefaultVoice() {
-    const voices = synth.getVoices();
-    defaultVoice = voices.find(v => v.lang.startsWith("pt")) ||
-        voices.find(v => v.lang.startsWith("en")) ||
-        (voices.length > 0 ? voices[0] : null);
+function initVoices() {
+    return new Promise(resolve => {
+        voices = synth.getVoices();
+        if (voices.length > 0) {
+            resolve(voices);
+        } else {
+            const interval = setInterval(() => {
+                voices = synth.getVoices();
+                if (voices.length > 0) {
+                    clearInterval(interval);
+                    resolve(voices);
+                }
+            }, 100);
+        }
+    });
 }
 
-if (synth.onvoiceschanged !== undefined) {
-    synth.onvoiceschanged = setupDefaultVoice;
-} else {
-    setTimeout(setupDefaultVoice, 100);
+async function setVoice() {
+    voices = await initVoices();
+
+    const seen = new Set();
+    voices = voices.filter(v => {
+        const key = v.name + v.lang;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+
+    const voiceDropdown = document.querySelector("#dropdown-voice");
+    if (!voiceDropdown) return;
+
+    voiceDropdown.innerHTML = "";
+
+    voices.forEach((voice, index) => {
+        const voiceItem = document.createElement("li");
+        const voiceLink = document.createElement("a");
+        voiceLink.classList.add("dropdown-item", "text-info");
+        voiceLink.href = "#";
+        voiceLink.textContent = `${voice.name} (${voice.lang})`;
+        voiceLink.setAttribute("data-voice-index", index);
+        voiceItem.appendChild(voiceLink);
+        voiceDropdown.appendChild(voiceItem);
+    });
+}
+
+if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = setVoice;
 }
 
 document.getElementById("readChapterBtn").addEventListener("click", () => {
@@ -300,21 +345,29 @@ document.getElementById("readChapterBtn").addEventListener("click", () => {
 
     if (!currentVerses || currentVerses.length === 0) return;
 
-    const text = currentVerses.map((verse, i) => `${i + 1}. ${verse}`).join(" ");
+    const text = currentVerses.map((verse, i) => `${i + 1}, ${verse}`).join(" ");
     const utterance = new SpeechSynthesisUtterance(text);
     currentUtterance = utterance;
 
-    if (defaultVoice) {
-        utterance.voice = defaultVoice;
+    if (voice) {
+        utterance.voice = voice;
+        utterance.lang = voice.lang;
     }
 
     utterance.rate = 1;
     utterance.pitch = 1;
     utterance.volume = 1;
 
-    synth.speak(utterance);
-    updateIcons("playing");
+    utterance.onstart = () => console.log("✅ Speech started:", voice?.name);
+    utterance.onerror = (e) => console.error("❌ Speech error:", e.error);
+    utterance.onend = () => console.log("✅ Speech finished");
+
+    setTimeout(() => {
+        synth.speak(utterance);
+        updateIcons("playing");
+    }, 100);
 });
+
 
 document.getElementById("pauseBtn").addEventListener("click", () => {
     if (synth.speaking && !synth.paused) {
@@ -371,3 +424,4 @@ function updateIcons(state) {
 
 loadBookMapping();
 loadBible();
+setVoice();
