@@ -5,7 +5,7 @@
                 <img width="40" id="expand-icon" src="/assets/img/sidebar-expand-left.svg">
                 <img width="40" id="compress-icon" class="d-none" src="/assets/img/sidebar-compress-right.svg">
             </button>
-            <div class="col-5 mx-1 d-flex align-items-center">
+            <div class="col-4 mx-1 d-flex align-items-center">
                 <div class="m-2 d-flex flex-wrap align-items-center">
                     <button id="readChapterBtn" class="btn btn-outline-primary">
                         <i class="fa-solid fa-play"></i>
@@ -19,6 +19,12 @@
                     <button id="stopBtn" class="btn btn-outline-danger d-none">
                         <i class="fa-solid fa-stop"></i>
                     </button>
+                    <button id="change-voice" class="btn btn-dark bg-gradient p-2 m-1" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-microphone"></i> VOICE
+                    </button>
+                    <ul id="dropdown-voice" class="dropdown-menu dropdown-menu me-lg-2 bg-dark">
+                    </ul>
                 </div>
             </div>
             <div class="col-5 text-end">
