@@ -1,12 +1,12 @@
 <div id="project" class="d-flex flex-wrap pt-2 justify-content-center">
     <div id="bible" class="container-md my-2 shadow-lg">
-        <div class="navbar navbar-dark bg-dark justify-content-between">
+        <div class="navbar navbar-dark flex-nowrap bg-dark justify-content-between">
             <button id="toggleButton" class="ms-1 d-flex justify-content-center navbar-toggler border-0 shadow-sm d-lg-none" type="button">
-                <img width="40" id="expand-icon" src="/assets/img/sidebar-expand-left.svg">
-                <img width="40" id="compress-icon" class="d-none" src="/assets/img/sidebar-compress-right.svg">
+                <img width="30" id="expand-icon" src="/assets/img/sidebar-expand-left.svg">
+                <img width="30" id="compress-icon" class="d-none" src="/assets/img/sidebar-compress-right.svg">
             </button>
-            <div class="col-4 mx-1 d-flex align-items-center">
-                <div class="m-2 d-flex flex-wrap align-items-center">
+            <div class="w-auto d-flex align-items-center">
+                <div class="d-flex flex-nowrap gap-1 ms-lg-2 align-items-center">
                     <button id="readChapterBtn" class="btn btn-outline-primary">
                         <i class="fa-solid fa-play"></i>
                     </button>
@@ -19,16 +19,16 @@
                     <button id="stopBtn" class="btn btn-outline-danger d-none">
                         <i class="fa-solid fa-stop"></i>
                     </button>
-                    <button id="change-voice" class="btn btn-dark bg-gradient p-2 m-1" type="button" data-bs-toggle="dropdown"
+                    <button id="change-voice" class="btn btn-dark bg-gradient m-1" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <i class="fa-solid fa-microphone"></i> VOICE
+                        <i class="fa-solid fa-microphone p-1"></i>
                     </button>
                     <ul id="dropdown-voice" class="dropdown-menu dropdown-menu me-lg-2 bg-dark">
                     </ul>
                 </div>
             </div>
             <div class="col-5 text-end">
-                <button id="change-translation" class="btn btn-dark bg-gradient p-2 m-1" type="button"
+                <button id="change-translation" class="btn btn-dark bg-gradient p-1 m-1" type="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i> TRANSLATION
                 </button>

@@ -84,7 +84,6 @@ document.querySelector("#dropdown-translation").addEventListener("click", functi
 document.querySelector("#dropdown-voice").addEventListener("click", function (event) {
     if (event.target.tagName === 'A') {
         const voiceIndex = event.target.getAttribute("data-voice-index");
-        voices = synth.getVoices();
         voice = voices[voiceIndex];
         event.preventDefault();
     }
@@ -264,6 +263,11 @@ async function changeTranslation(translation) {
     } else {
         defaultBook();
     }
+    if (currentTranslation === 'aa.json') {
+        voice = voices.find(v => v.lang.startsWith('pt'));
+    } else if (currentTranslation === 'kjv.json') {
+        voice = voices.find(v => v.lang.startsWith('en'));
+    }
 }
 
 function defaultBook() {
@@ -291,26 +295,21 @@ function openChapterInUI(bookData) {
     });
 }
 
-function initVoices() {
+async function initVoices() {
     return new Promise(resolve => {
-        voices = synth.getVoices();
-        if (voices.length > 0) {
-            resolve(voices);
-        } else {
-            const interval = setInterval(() => {
-                voices = synth.getVoices();
-                if (voices.length > 0) {
-                    clearInterval(interval);
-                    resolve(voices);
-                }
-            }, 100);
-        }
+        const interval = setInterval(() => {
+            voices = synth.getVoices();
+            if (voices.length > 0) {
+                clearInterval(interval);
+                resolve(voices);
+            }
+        }, 100);
     });
 }
 
 async function setVoice() {
     voices = await initVoices();
-
+    voices = voices.filter(v => v.lang.startsWith("pt") || v.lang.startsWith("en"));
     const seen = new Set();
     voices = voices.filter(v => {
         const key = v.name + v.lang;
@@ -337,7 +336,7 @@ async function setVoice() {
 }
 
 if (speechSynthesis.onvoiceschanged !== undefined) {
-    speechSynthesis.onvoiceschanged = setVoice;
+    speechSynthesis.onvoiceschanged = setVoice();
 }
 
 document.getElementById("readChapterBtn").addEventListener("click", () => {
@@ -345,22 +344,21 @@ document.getElementById("readChapterBtn").addEventListener("click", () => {
 
     if (!currentVerses || currentVerses.length === 0) return;
 
-    const text = currentVerses.map((verse, i) => `${i + 1}, ${verse}`).join(" ");
-    const utterance = new SpeechSynthesisUtterance(text);
+    const text = currentVerses.map((verse, i) => `${i + 1}. ${verse}`).join(" ");
+    const parts = text.split(/(?<=[.!?])\s+/);
+    const utterance = new SpeechSynthesisUtterance(
+        parts.forEach(part => {
+        const u = new SpeechSynthesisUtterance(part);
+        if (voice) {
+            u.voice = voice;
+            u.lang = voice.lang;
+        }
+        speechSynthesis.speak(u);
+    }));
     currentUtterance = utterance;
-
-    if (voice) {
-        utterance.voice = voice;
-        utterance.lang = voice.lang;
-    }
-
     utterance.rate = 1;
     utterance.pitch = 1;
     utterance.volume = 1;
-
-    utterance.onstart = () => console.log("✅ Speech started:", voice?.name);
-    utterance.onerror = (e) => console.error("❌ Speech error:", e.error);
-    utterance.onend = () => console.log("✅ Speech finished");
 
     setTimeout(() => {
         synth.speak(utterance);
